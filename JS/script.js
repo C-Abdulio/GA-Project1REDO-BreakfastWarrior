@@ -10,7 +10,7 @@ const player = {
 }
 
 
-const rocks = [
+const cherrios = [
   {x:0,y:0},
   {x:0,y:1},
   {x:0,y:2},
@@ -36,24 +36,24 @@ const rocks = [
 ]
 
 function fungShui(){
-  console.log(rocks);
+  console.log(cheerios);
 }
 
 fungShui();
 
-function makeRocks(){
+function makeCereal(){
 
-  for(let i = 0; i < rocks.length; i+=1){
-    let boulder = document.createElement('div');
-    boulder.className = 'barrier';
-    boulder.id = 'rocks';
-    let rocky = rocks[i];
-    boulder.style.left = (rocky.x * 10).toString() + 'px';
-    boulder.style.top = (rocky.y * 10).toString() + 'px';
-    boardEL.appendChild(boulder);
+  for(let i = 0; i < cheerios.length; i+=1){
+    let o = document.createElement('div');
+    o.className = 'barrier';
+    o.id = 'rocks';
+    let wheels = cheerios[i];
+    o.style.left = (cheerios.x * 10).toString() + 'px';
+    o.style.top = (cheerios.y * 10).toString() + 'px';
+    boardEL.appendChild(o);
   }
 }
-console.log(makeRocks());
+console.log(makeCereal());
 //
 // function mountainRange(){
 //

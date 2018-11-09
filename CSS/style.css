@@ -22,7 +22,10 @@ body{
 }
 
 .barrier{
+  width:1000px;
+  height: 650px;
   position: absolute;
+  background-image:url("./assets/TestSprites/Rocks.png");
   border:solid 1.5px black;
 }
 
