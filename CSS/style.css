@@ -22,17 +22,19 @@ body{
 }
 
 .barrier{
-  width:1000px;
-  height: 650px;
-  position: absolute;
-  background-image:url("./assets/TestSprites/Rocks.png");
-  border:solid 1.5px black;
+  position: relative;
 }
 
 #rocks{
-  background-color:rgba(89, 55, 41, 1);
-  width:20px;
-  height:50px;
+  width:950px;
+  height: 650px;
+  background-image:url("../assets/TestSprites/Rocks.png");
+  background-size:cover;
+  border:solid 1.5px black;
+}
+
+#cherrios{
+  background-image: url("../assets/TestSprites/TestDesign_cheerios.png")
 }
 
 
