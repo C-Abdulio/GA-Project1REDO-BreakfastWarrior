@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.board {
+	width: 400px;
+	height: 400px;
+	background-color: grey;
+	position: relative;
+	border: solid white 1px;
+/*	display:flex;*/
+}
+
+.board div {
+	width: 100px;
+	height: 100px;
+	border: dashed black 1px;
+	position: absolute;
+	
+}
+
+.player {
+	margin:auto;
+	background-color: rgb(205, 20, 100);
+}
+
+.cheerios {
+	margin:auto;
+	background-color: blue;
+}
+
+
+.enemy {
+	margin:auto;
+	background-color:red;
+}
+
+.cornflakes{
+	margin:auto;
+	background-color: yellow;
+}
