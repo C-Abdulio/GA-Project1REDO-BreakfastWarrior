@@ -77,7 +77,6 @@ function rockBump(x, y){
 		let rocky = rocks[j];
 		if(x === rocky.x && y === rocky.y){
 			return true;
-			console.log("colliding");
 		}
 	}
 	return false;	
@@ -88,8 +87,7 @@ function collideFlake(x, y){
 		let kellogs = hazard[j];
 		if(x === kellogs.x && y === kellogs.y){
 			return true;
-			console.log("colliding");
-			gameOver();
+			
 		}
 	}
 	return false;	
@@ -103,10 +101,10 @@ function gridGuard (x, y){
 }
 
 function playerHarm(x, y){
-	debugger;
+	
 	if (canMoveTo(player.x - 1, player.y)){
 		player.x +=1;
-		console.log(ouch);
+		console.log('ouch');
 	}
 	else if (canMoveTo(player.x, player.y -1)){
 		player.y +=1
@@ -115,26 +113,39 @@ function playerHarm(x, y){
 }
 
 function gameOver(x, y){
-	if(collideFlake(player.x, player.y)){
-		let kellogs = document.getElementById('cornflakes');
+	if (collideFlake(player.x, player.y)){
+		const kellogs = document.querySelector('.cornflakes');
 		kellogs.style.backgroundColor = 'red';
 		console.log('done');
+		showModal();
+	}
+	else{
+		const kellogs = document.querySelector('.cornflakes');
+		kellogs.setAttribute('class', 'cornflakes');
 	}
 }
 
+function showModal(){
+	let modal = document.querySelector('.modal');
+	modal.style.display = "block";
+    console.log('game over');
+    return true;
+}
+
 function canMoveTo(x, y){//only determines collission against static option
-	// debugger;
 	if(gridGuard(x, y)){
-		return false;
 		console.log('wall');
+		return false;
 	}
 	else if (rockBump(x, y)){
-		return false;
 		console.log('oops');
+		return false;
 	}
 	else if (collideFlake(x, y)){
-		return false;
 		playerHarm(x, y);
+		gameOver();
+		return false;
+		
 	}
 	else {
 		return true;

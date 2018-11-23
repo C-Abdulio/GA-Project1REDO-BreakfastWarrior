@@ -4,6 +4,7 @@
 }
 
 .board {
+	z-index: -1;
 	width: 400px;
 	height: 400px;
 	background-color: grey;
@@ -23,20 +24,47 @@
 .player {
 	margin:auto;
 	background-color: rgb(205, 20, 100);
+	z-index:0;
 }
 
 .cheerios {
 	margin:auto;
 	background-color: blue;
+	z-index:0;
 }
 
 
 .enemy {
 	margin:auto;
 	background-color:red;
+	z-index:0;
 }
 
 .cornflakes{
 	margin:auto;
 	background-color: yellow;
+	z-index:0;
+}
+
+.modal{
+	display:none;
+	z-index: 1;
+	position: fixed;
+	width:100rem;
+	height: 100rem;
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.5);
+}
+
+.modalInner{
+	margin: 5% auto;
+	padding: 20px;
+	width: 100%;
+}
+
+.close{
+	color: white;
+	font-size:28px;
+	font-weight: bold;
 }
