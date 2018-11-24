@@ -1,6 +1,7 @@
 let boardEl = document.querySelector('.board');
 let playerEl = document.querySelector('.player');
 let enemyEl = document.querySelector('.enemy');
+let start = document.querySelector('.start');
 
 const player = {
   x:0, y:0
@@ -34,17 +35,30 @@ const hazard = [
 {x:3, y:1}
 ]
 
+function startGame(){
+// playerEl.style.left = "100px";
+// playerEl.style.top = "100px";
+let btn = document.querySelector('.startInner');
+btn.style.marginTop = '200px';// move it down 200px
+btn.style.verticleAlign = "center";
+btn.style.textAlign = "center";
+btn.addEventListener('click', evt => makingSure());
+console.log('game');
+};
+
 function makingSure(){
+	start.style.display = "none";
 	console.log(playerEl);
 	console.log(boardMap);
 	console.log(boardEl);
 	console.log(enemy);
 	console.log(rocks);
-	playerEl.style.left=player.x.toString() + "px";//starting position
-	playerEl.style.top=player.y.toString() + 'px';
-}
-
-makingSure();
+	playerEl.style.display = "block";
+	// playerEl.style.left = "100px";
+	// playerEl.style.top = "100px";
+	
+};
+startGame();
 
 function makeRocks(){
 	for (let i = 0; i < rocks.length; i++){
@@ -86,6 +100,8 @@ function collideFlake(x, y){
 	for(let j = 0; j < hazard.length; j++){
 		let kellogs = hazard[j];
 		if(x === kellogs.x && y === kellogs.y){
+			console.log('work');
+
 			return true;
 			
 		}
@@ -100,20 +116,44 @@ function gridGuard (x, y){
 	}
 }
 
-function playerHarm(x, y){
-	
-	if (canMoveTo(player.x - 1, player.y)){
-		player.x +=1;
-		console.log('ouch');
-	}
-	else if (canMoveTo(player.x, player.y -1)){
-		player.y +=1
+// function playerHarm(x, y){
 
-	}
-}
+// 	switch(player.x, player.y){
+// 		case (player.x + 1, player.y):
+// 		playerEl.style.left = (player.x - 1 * 1).toString() + 'px';
+// 		console.log('ouch');
+// 		break;
+// 		case (player. x - 1, player.y):
+// 		playerEl.style.left = (player.x + 1 * 1).toString() + 'px';
+// 		console.log('ouch');
+// 		break;
+// 		case (player.x, player.y + 1):
+// 		playerEl.style.top = (player.y - 1 * 1).toString() + 'px';
+// 		console.log('ouch');
+// 		break;
+// 		case (player.x, player.y - 1):
+// 		playerEl.style.top = (player.y + 1 * 1).toString() + 'px';
+// 		console.log('ouch');
+// 		break;
+// 		default:
+// 		break;
+
+// 	}
+
+	
+// // 	if (canMoveTo(player.x - 1, player.y)){
+// // 		player.x +=1;
+// // 		console.log('ouch');
+// // 	}
+// // 	else if (canMoveTo(player.x, player.y -1)){
+// // 		player.y +=1
+
+// // 	}
+// // }
+// }
 
 function gameOver(x, y){
-	if (collideFlake(player.x, player.y)){
+	if (player.x, player.y){
 		const kellogs = document.querySelector('.cornflakes');
 		kellogs.style.backgroundColor = 'red';
 		console.log('done');
@@ -132,6 +172,8 @@ function showModal(){
     return true;
 }
 
+
+
 function canMoveTo(x, y){//only determines collission against static option
 	if(gridGuard(x, y)){
 		console.log('wall');
@@ -142,8 +184,8 @@ function canMoveTo(x, y){//only determines collission against static option
 		return false;
 	}
 	else if (collideFlake(x, y)){
-		playerHarm(x, y);
 		gameOver();
+		// playerHarm(x, y);
 		return false;
 		
 	}

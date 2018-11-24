@@ -22,6 +22,7 @@
 }
 
 .player {
+	display: none;
 	margin:auto;
 	background-color: rgb(205, 20, 100);
 	z-index:0;
@@ -63,8 +64,27 @@
 	width: 100%;
 }
 
-.close{
+/*.close{
 	color: white;
 	font-size:28px;
 	font-weight: bold;
+}*/
+
+.start{
+	display:block;
+	z-index: 1;
+	position: fixed;
+	width: 100rem;
+	height: 100rem;
+	background-color: rgb(255, 100,234);
+	position:absolute;
+}
+
+.startInner{
+	width: 200px;
+	height: 100px;
+	position: relative;
+	margin:5% auto;
+	padding: 2px;
+	background-color: purple;
 }
