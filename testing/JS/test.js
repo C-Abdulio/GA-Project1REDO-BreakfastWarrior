@@ -35,6 +35,10 @@ const hazard = [
 {x:3, y:1}
 ]
 
+const item = [
+{x:3, y:2}
+]
+
 function startGame(){
 // playerEl.style.left = "100px";
 // playerEl.style.top = "100px";
@@ -85,6 +89,31 @@ function makeHazard(){
 };
 
 makeHazard();
+
+function makeItem(){
+	for (let c = 0; c < item.length; c++){
+		let cerealBowl = document.createElement('div');
+		cerealBowl.className = 'cereal';
+		let cereal = item[c];
+		cerealBowl.style.left = (cereal.x * 100).toString() + 'px';
+		cerealBowl.style.top = (cereal.y * 100).toString() + 'px';
+		boardEl.appendChild(cerealBowl);
+	}
+};
+
+makeItem();
+
+function takeItem(x, y){
+	for(let i = 0; i < item.lenght; i++){
+		let items = item[i];
+		if(x === items.x && y === items.y){
+			let bowl = document.querySelector('.cereal');
+			boardEl.removeChild(bowl);
+			return true;
+		}
+	}
+	return false;
+}
 
 function rockBump(x, y){
 	for(let j = 0; j < rocks.length; j++){
@@ -188,6 +217,9 @@ function canMoveTo(x, y){//only determines collission against static option
 		// playerHarm(x, y);
 		return false;
 		
+	}
+	else if (takeItem(x, y)){
+		return false;
 	}
 	else {
 		return true;

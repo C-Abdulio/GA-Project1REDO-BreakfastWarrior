@@ -47,6 +47,12 @@
 	z-index:0;
 }
 
+.cereal{
+	margin:auto;
+	background-color: green;
+	z-index:0;
+}
+
 .modal{
 	display:none;
 	z-index: 1;
