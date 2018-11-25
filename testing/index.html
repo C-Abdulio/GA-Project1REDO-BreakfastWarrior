@@ -10,12 +10,22 @@
 	<div class="start">
 		<div class = "startInner">PRESS START</div>
 	</div>
-	<div class="modal">
+	<div class="modal" id="gameOver">
 			<div class="modalInner">
 				<!-- <span class="close">&times;</span> -->
-				<img src="./gameOver.gif" alt="" class="gameOver">
+				<img src="./gameOver.gif" alt="game_over" >
+				<button onclick="startGame()">PLAY AGAIN?</button>
 			</div>
-		</div>
+	</div>
+	<div class="modal" id="youWin">
+			<div class="modalInner">
+				<!-- <span class="close">&times;</span> -->
+				<div id = "winning">
+					<h1>YOU WIN</h1>
+					<button onclick="startGame()">PLAY AGAIN?</button>
+				</div>
+			</div>
+	</div>
 
 	<div class="board" id="map1">
 		<div class="player"></div>

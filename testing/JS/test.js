@@ -2,6 +2,7 @@ let boardEl = document.querySelector('.board');
 let playerEl = document.querySelector('.player');
 let enemyEl = document.querySelector('.enemy');
 let start = document.querySelector('.start');
+let modal = document.querySelector('.modal');
 
 const player = {
   x:0, y:0
@@ -16,9 +17,9 @@ const boardMap = [
  ];
 
 const enemy = [
- 		{x:3,y:0}, {x:3,y:1},
- 		{x:3,y:1}, {x:3,y:2},
- 		{x:3,y:2}, {x:3,y:3}
+	{x:3,y:0}, {x:3,y:1},
+	{x:3,y:1}, {x:3,y:2},
+	{x:3,y:2}, {x:3,y:3}
 ]
 
 // const enemy1 = [
@@ -42,6 +43,8 @@ const item = [
 function startGame(){
 // playerEl.style.left = "100px";
 // playerEl.style.top = "100px";
+modal.style.display = "none";
+start.style.display = "block";
 let btn = document.querySelector('.startInner');
 btn.style.marginTop = '200px';// move it down 200px
 btn.style.verticleAlign = "center";
@@ -52,14 +55,14 @@ console.log('game');
 
 function makingSure(){
 	start.style.display = "none";
+	const kellogs = document.querySelector('.cornflakes');
+		kellogs.setAttribute('class', 'cornflakes');
 	console.log(playerEl);
-	console.log(boardMap);
 	console.log(boardEl);
-	console.log(enemy);
-	console.log(rocks);
+	console.log(item);
 	playerEl.style.display = "block";
-	// playerEl.style.left = "100px";
-	// playerEl.style.top = "100px";
+	// playerEl.style.left = player.x;
+	// playerEl.style.top = player.y;
 	
 };
 startGame();
@@ -91,6 +94,7 @@ function makeHazard(){
 makeHazard();
 
 function makeItem(){
+	//first make a loop to create items
 	for (let c = 0; c < item.length; c++){
 		let cerealBowl = document.createElement('div');
 		cerealBowl.className = 'cereal';
@@ -99,20 +103,34 @@ function makeItem(){
 		cerealBowl.style.top = (cereal.y * 100).toString() + 'px';
 		boardEl.appendChild(cerealBowl);
 	}
+	//then make a loop to get rid of them
+	const eat = document.querySelector('.cereal');
+	for (let e = 0; e < eat.length; e++){
+		eat[i].remove();
+	}
 };
 
 makeItem();
 
-function takeItem(x, y){
+function checkItem(x, y){
+	// debugger;
 	for(let i = 0; i < item.lenght; i++){
 		let items = item[i];
 		if(x === items.x && y === items.y){
-			let bowl = document.querySelector('.cereal');
-			boardEl.removeChild(bowl);
+			console.log('item');
 			return true;
 		}
 	}
 	return false;
+};
+
+function takeItem(x, y){
+	for(let j = 0; j < item.length; j+=1){
+		let get = item[j];
+		if(x === get.x, y === get.y){
+			item.splice(i, 1);
+		}
+	}
 }
 
 function rockBump(x, y){
@@ -129,10 +147,7 @@ function collideFlake(x, y){
 	for(let j = 0; j < hazard.length; j++){
 		let kellogs = hazard[j];
 		if(x === kellogs.x && y === kellogs.y){
-			console.log('work');
-
 			return true;
-			
 		}
 	}
 	return false;	
@@ -182,20 +197,27 @@ function gridGuard (x, y){
 // }
 
 function gameOver(x, y){
-	if (player.x, player.y){
+	if (player.x != undefined, player.y != undefined){
 		const kellogs = document.querySelector('.cornflakes');
 		kellogs.style.backgroundColor = 'red';
-		console.log('done');
-		showModal();
+		console.log('K.O.');
+		let lose = document.querySelector('#gameOver');
+		showModal(lose);
 	}
-	else{
-		const kellogs = document.querySelector('.cornflakes');
-		kellogs.setAttribute('class', 'cornflakes');
+}
+
+function uWin(x, y){
+	let munch = item;
+	for (let e = 0; e < munch.length; e ++){
+		if (player.x === munch.x, player.y === munch.y){
+			console.log('YAY');
+			let win = document.querySelector('#youWin');
+			showModal(win);
+		}
 	}
 }
 
 function showModal(){
-	let modal = document.querySelector('.modal');
 	modal.style.display = "block";
     console.log('game over');
     return true;
@@ -215,11 +237,7 @@ function canMoveTo(x, y){//only determines collission against static option
 	else if (collideFlake(x, y)){
 		gameOver();
 		// playerHarm(x, y);
-		return false;
-		
-	}
-	else if (takeItem(x, y)){
-		return false;
+		return false;	
 	}
 	else {
 		return true;
@@ -239,9 +257,11 @@ document.body.addEventListener('keydown', tap => {
 			break;
 		case 38:
 			moveUp();
+			console.log('up');
 		break;
 		case 39:
 			moveRight();
+			console.log('right');
 			break;
 		case 40:
 			moveDown();
@@ -255,6 +275,10 @@ document.body.addEventListener('keydown', tap => {
 function movePlayer(x, y){
 	playerEl.style.left = (player.x * 100).toString() + 'px';
 	playerEl.style.top = (player.y * 100).toString() + 'px';
+	if (checkItem(player.x, player.y)){
+		takeItem(player.x. player.y);
+		makeItem();
+	}
 }
 
 function moveLeft(){
