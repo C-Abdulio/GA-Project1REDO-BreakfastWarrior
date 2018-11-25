@@ -54,15 +54,19 @@ console.log('game');
 };
 
 function makingSure(){
+		debugger;
 	start.style.display = "none";
-	const kellogs = document.querySelector('.cornflakes');
-		kellogs.setAttribute('class', 'cornflakes');
 	console.log(playerEl);
 	console.log(boardEl);
 	console.log(item);
 	playerEl.style.display = "block";
-	// playerEl.style.left = player.x;
-	// playerEl.style.top = player.y;
+	makeRocks();
+	makeHazard();
+	let kellogs = document.querySelector('.cornflakes');
+		kellogs.setAttribute("class", "cornflakes");
+	makeItem();
+	playerEl.style.left = (player.x === 0).toString() + 'px';
+	playerEl.style.top = (player.y === 0).toString() + 'px';
 	
 };
 startGame();
@@ -76,9 +80,7 @@ function makeRocks(){
 		cheerios.style.top = (cereal.y * 100).toString() + 'px';
 		boardEl.appendChild(cheerios);
 	}
-}
-
-makeRocks();
+};
 
 function makeHazard(){
 		for (let i = 0; i < hazard.length; i++){
@@ -91,10 +93,13 @@ function makeHazard(){
 	}
 };
 
-makeHazard();
-
 function makeItem(){
-	//first make a loop to create items
+		//make a loop to get rid of them
+	const eat = document.getElementsByClassName('cereal');
+	for (let e = 0; e < eat.length; e++){
+		eat[e].remove();
+	}
+	//make a loop to create items
 	for (let c = 0; c < item.length; c++){
 		let cerealBowl = document.createElement('div');
 		cerealBowl.className = 'cereal';
@@ -103,18 +108,13 @@ function makeItem(){
 		cerealBowl.style.top = (cereal.y * 100).toString() + 'px';
 		boardEl.appendChild(cerealBowl);
 	}
-	//then make a loop to get rid of them
-	const eat = document.querySelector('.cereal');
-	for (let e = 0; e < eat.length; e++){
-		eat[i].remove();
-	}
 };
 
 makeItem();
 
 function checkItem(x, y){
 	// debugger;
-	for(let i = 0; i < item.lenght; i++){
+	for(let i = 0; i < item.length; i++){
 		let items = item[i];
 		if(x === items.x && y === items.y){
 			console.log('item');
@@ -128,7 +128,8 @@ function takeItem(x, y){
 	for(let j = 0; j < item.length; j+=1){
 		let get = item[j];
 		if(x === get.x, y === get.y){
-			item.splice(i, 1);
+			item.splice(j);
+			console.log('item get')
 		}
 	}
 }
@@ -198,8 +199,8 @@ function gridGuard (x, y){
 
 function gameOver(x, y){
 	if (player.x != undefined, player.y != undefined){
-		const kellogs = document.querySelector('.cornflakes');
-		kellogs.style.backgroundColor = 'red';
+		const badFlake = document.querySelector('.cornflakes');
+		badFlake.style.backgroundColor = 'red';
 		console.log('K.O.');
 		let lose = document.querySelector('#gameOver');
 		showModal(lose);
@@ -276,7 +277,7 @@ function movePlayer(x, y){
 	playerEl.style.left = (player.x * 100).toString() + 'px';
 	playerEl.style.top = (player.y * 100).toString() + 'px';
 	if (checkItem(player.x, player.y)){
-		takeItem(player.x. player.y);
+		takeItem(player.x, player.y);
 		makeItem();
 	}
 }
