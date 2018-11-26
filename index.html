@@ -9,8 +9,29 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="start">
+    <div class = "startInner">PRESS START</div>
+  </div>
+  <div class="modal" id="gameOver">
+      <div class="modalInner">
+        <!-- <span class="close">&times;</span> -->
+        <img src="./assets/TestSprites/gameOver.gif" alt="game_over" >
+        <button onclick="resetBoard()">PLAY AGAIN?</button>
+      </div>
+  </div>
+  <div class="modal" id="youWin">
+      <div class="modalInner">
+        <!-- <span class="close">&times;</span> -->
+        <div id = "winning">
+          <h1>YOU WIN</h1>
+          <button onclick="resetBoard()">PLAY AGAIN?</button>
+        </div>
+      </div>
+  </div>
+
   <div class="board" id="map1">
-    <div class="barrier" id="rocks">
+    <div id="rocks"></div>
+    <div class="barrier">
       <div class="object" id="player"></div>
       <div class="item" id="cereal"></div>
     </div>

@@ -3,13 +3,15 @@
 const playerEl = document.querySelector("#player");
 const enemyEl = document.querySelector("#enemy");
 const itemEl = document.getElementsByClassName("item");
-const boardEL = document.querySelector(".board");
+const boardEl = document.querySelector(".board");
+let start = document.querySelector('.start');
+let modal = document.querySelector('.modal');
 
 const player = {
-  x:1, y:1
+  x:0, y:0
 }
 
-const board = [
+const barrier = [
 
   {x:0, y:0},  {x:1, y:0},  {x:2, y:0}, {x:3, y:0}, {x:4, y:0}, {x:5, y:0},  {x:6, y:0}, {x:7, y:0}, {x:8, y:0},  {x:9, y:0},
   {x:0, y:1},  {x:1, y:1},  {x:2, y:1}, {x:3, y:1}, {x:4, y:1}, {x:5, y:1},  {x:6, y:1}, {x:7, y:1}, {x:8, y:1},  {x:9, y:1},
@@ -28,41 +30,118 @@ const enemy = {
   x:5, y:2
 }
 
-const kellogs = {
-
+const flakes = {
+  x:4, y:2
 }
 
+const item = [
+{x:3, y:2}
+]
 
+function resetBoard(){
+  playerEl.style.display = "none";
+  playerEl.style.left = (player.x * 50).toString() + 'px';
+  playerEl.style.top = (player.y * 50).toString() + 'px'; 
+  startGame();
+}
+
+function startGame(){
+modal.style.display = "none";
+start.style.display = "block";
+let btn = document.querySelector('.startInner');
+btn.style.marginTop = '200px';// move it down 200px
+btn.style.verticleAlign = "center";
+btn.style.textAlign = "center";
+btn.addEventListener('click', evt => fungShui());
+console.log('game');
+};
 
 function fungShui(){
-  console.log(cheerios);
+start.style.display = "none";
+  console.log(boardEl); 
+  playerEl.style.display = "block";
+  console.log(playerEl);
+  makeCheerios();
+  console.log(cheerios)
+  makeHazard();
+  // let kellogs = document.querySelector('.cornflakes');
+  //   kellogs.setAttribute("class", "cornflakes");
+  makeItem();
+  console.log(item);
 }
 
 fungShui();
 
-function makeCereal(){
+function makeCheerios(){
 
-  for(let i = 0; i < cheerios.length; i += 1){
+  for(let i = 0; i < cheerios.length; i ++){
     let o = document.createElement('div');
-    o.className = 'barrier';
-    o.id = 'cheerios';
+    o.className = 'cheerios';
     let wheels = cheerios[i];
     o.style.width = "20px";
     o.style.height = "50px";
-    o.style.left = (cheerios.x * 10).toString() + 'px';
-    o.style.top = (cheerios.y * 10).toString() + 'px';
-    boardEL.appendChild(o);
+    o.style.left = (wheels.x * 100).toString() + 'px';
+    o.style.top = (wheels.y * 100).toString() + 'px';
+    boardEl.appendChild(o);
+    console.log('cheerios')
   }
 }
-console.log(makeCereal());
 
-makeCereal();
-//
-// function mountainRange(){
-//
-// }
-//
-// mountainRange()
+function makeHazard(){
+    for (let i = 0; i < flakes.length; i++){
+    let cornflakes = document.createElement('div');
+    cornflakes.className = 'cornflakes';
+    let kellogs = flakes[i];
+    conrflakes.style.width = "30px";
+    conrflakes.style.height = "60px";
+    cornflakes.style.left = (kellogs.x * 100).toString() + 'px';
+    cornflakes.style.top = (kellogs.y * 100).toString() + 'px';
+    boardEl.appendChild(cornflakes);
+    console.log('cornflake');
+  }
+};
+
+function makeItem(){
+    //make a loop to get rid of them
+  const eat = document.getElementsByClassName('cereal');
+  for (let e = 0; e < eat.length; e++){
+    eat[e].remove();
+  }
+  //make a loop to create items
+  for (let c = 0; c < item.length; c++){
+    let cerealBowl = document.createElement('div');
+    cerealBowl.className = 'cereal';
+    let cereal = item[c];
+    cerealBowl.style.width = "10px";
+    cerealBowl.style.height = "20px";
+    cerealBowl.style.left = (cereal.x * 100).toString() + 'px';
+    cerealBowl.style.top = (cereal.y * 100).toString() + 'px';
+    boardEl.appendChild(cerealBowl);
+  }
+};
+
+function checkItem(x, y){
+  // debugger;
+  for(let i = 0; i < item.length; i++){
+    let items = item[i];
+    if(x === items.x && y === items.y){
+      console.log('item');
+      return true;
+    }
+  }
+  return false;
+};
+
+function takeItem(x, y){
+  for(let j = 0; j < item.length; j+=1){
+    let get = item[j];
+    if(x === get.x, y === get.y){
+      item.splice(j);
+      console.log('item get')
+    }
+  }
+}
+
 
 
 document.body.addEventListener('keydown', tap => { // add listen for keypress to the body
@@ -74,18 +153,22 @@ const keyPress = tap.keyCode; //assign keyPress a code
     case 37://equal to left arrow key
       moveLeft();
       console.log("move left");
+      console.log(player.x);
       break;
     case 38://equal to up arrow key
       moveUp();
       console.log("move up");
+      console.log(player.y);
       break;
     case 39://equal to right arrow key
       moveRight();
       console.log("move right");
+      console.log(player.x);
       break;
     case 40://equal to down arrow key
       moveDown();
       console.log("move down");
+      console.log(player.y);
       break;
     default:
   }
@@ -94,6 +177,10 @@ const keyPress = tap.keyCode; //assign keyPress a code
 function movePlayer (x, y){
   playerEl.style.left = (player.x * 50).toString() + 'px';
   playerEl.style.top = (player.y * 50).toString() + 'px';
+  if (checkItem(player.x, player.y)){
+    takeItem(player.x, player.y);
+    makeItem();
+  }
 }
 
 function moveLeft(){
@@ -111,4 +198,56 @@ function moveRight(){
 function moveDown(){
   player.y+=1;
   movePlayer(player.x, player.y)
+}
+
+function gridGuard (x, y){
+  if (player.x < 0 || player.y < 0|| player.x > 9 || player.y > 5){
+    return true
+  }
+}
+
+function canMoveTo(x, y){//only determines collission against static option
+  if(gridGuard(player.x, player.y)){
+    console.log('wall');
+    return false;
+  }
+  // else if (rockBump(x, y)){
+  //   console.log('oops');
+  //   return false;
+  // }
+  // else if (collideFlake(x, y)){
+  //   gameOver();
+  //   // playerHarm(x, y);
+  //   return false; 
+  // }
+  else {
+    return true;
+  }
+}
+
+// function gameOver(x, y){
+//   if (player.x != undefined, player.y != undefined){
+//     let badFlake = document.querySelector('.cornflakes');
+//     badFlake.style.backgroundColor = 'red';
+//     console.log('K.O.');
+//     let lose = document.querySelector('#gameOver');
+//     showModal(lose);
+//   }
+// }
+
+function uWin(x, y){
+  let munch = item;
+  for (let e = 0; e < munch.length; e ++){
+    if (player.x === munch.x, player.y === munch.y){
+      console.log('YAY');
+      let win = document.querySelector('#youWin');
+      showModal(win);
+    }
+  }
+}
+
+function showModal(){
+  modal.style.display = "block";
+    console.log('game over');
+    return true;
 }

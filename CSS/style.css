@@ -1,5 +1,5 @@
 *{
-  margin: 0;
+  margin: auto;
   padding: 0;
 }
 
@@ -9,6 +9,7 @@ body{
 }
 
 .board{
+  z-index:0;
   width: 1000px;
   height:650px;
   background-color: grey;
@@ -21,25 +22,122 @@ body{
   border: dashed black 1px;
 }
 
+.item{
+  position:relative;
+  border:red dashed 1px;
+}
+
 .barrier{
+  width:910px;
+  height:550px;
   position: relative;
+  background-color:yellow;
+  margin-top:50px;
 }
 
 #rocks{
-  width:950px;
+  width:1000px;
   height: 650px;
   background-image:url("../assets/TestSprites/Rocks.png");
-  background-size:cover;
+  background-size:contain;
   border:solid 1.5px black;
+  position:absolute;
 }
 
-#cherrios{
-  background-image: url("../assets/TestSprites/TestDesign_cheerios.png")
+.cherrios{
+  margin: auto;
+  background-image: url("../assets/TestSprites/TestDesign_cheerios.png");
+  background-size:contain;
+  z-index: 0;
+  position: relative;
+}
+
+.enemy {
+  margin:auto;
+  background-color:red;
+  z-index:0;
+}
+
+.cornflakes{
+  margin:auto;
+  background-color: yellow;
+  z-index:0;
+}
+
+.cereal{
+  margin:auto;
+  background-color: green;
+  z-index:0;
 }
 
 
 #player{
-  background-color:rgba(237, 30, 221, 1);
+  background: url('../assets/TestSprites/TestDesign_BW.png');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 50px;
   height: 100px;
+  z-index:0;
+}
+
+.modal{
+  display:none;
+  z-index: 1;
+  position: fixed;
+  width:100rem;
+  height: 100rem;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modalInner{
+  margin: 5% auto;
+  padding: 20px;
+  width: 100%;
+}
+
+.modalInner button{
+  width:200px;
+  height:100px;
+  margin: 0 auto;
+  position: relative;
+  background-color: purple;
+  color:white;
+  box-shadow: 3px, 5px, rgba(0,0,0, 0.4);
+}
+
+.winning{
+  color:magenta;
+  text-shadow: 2px, 3px, black;
+  font-size: 20pt;
+  background-color: white;
+}
+
+
+
+/*.close{
+  color: white;
+  font-size:28px;
+  font-weight: bold;
+}*/
+
+.start{
+  display:block;
+  z-index: 1;
+  position: fixed;
+  width: 100rem;
+  height: 100rem;
+  background-color: rgb(255, 100,234);
+  position:absolute;
+}
+
+.startInner{
+  width: 200px;
+  height: 100px;
+  position: relative;
+  margin:5% auto;
+  padding: 2px;
+  background-color: purple;
 }
