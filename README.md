@@ -1,7 +1,7 @@
 # GA_P1_Redo_BreakfastWarrior
 **A re-do of the first project for GA WDI - Now a Zelda-like game with grid based collision.**
 
-![Breakfast Warrior](https://github.com/C-Abdulio/GA_P1_REDO_BreakfastWarrior/blob/master/WIREFRAME_BW_Redo_shortmap.png)
+![Breakfast Warrior](https://github.com/C-Abdulio/GA_P1REDO_BreakfastWarrior/blob/master/WIREFRAME_BW_Redo_shortmap.png)
 
 **1) Saturday Morning Breakfast Warrior**
 **_A Zelda type action-adventure game_**
@@ -49,7 +49,15 @@
 - Player can move.
 - Player can traverse through the entire map.
 - Player can collide with static objects like rocks, enemies and items
-- Player can win by collecting cereal.
+- ~~Player can win by collecting cereal.~~
+- Player loses by coliding with Bad guy.
 
 _**PRODUCT REFLECTION**_
 _Of all the ideas that I worked on, this was the one I put the most effort into...though one cannot tell without proper wireframes. _
+
+# FINAL NOTES:
+ - full game could not be completed. At behest of instructors, the scratch file will be presented as the game
+ - full game still in progress. without a surefire way to render board and items dynamically, hard coding co-ordinates is a requirement. need time to experiment with settings in order to fulfill full vision.
+ - MVP has shifted from getting a win condition, to fulfilling a losing condition.
+ 
+ # Link to site - http://red-shock.surge.sh/
