@@ -45,8 +45,8 @@ function startGame(){
 modal.style.display = "none";
 start.style.display = "block";
 let btn = document.querySelector('.startInner');
-btn.style.marginTop = '200px';// move it down 200px
-btn.style.marginLeft = 'auto';
+// btn.style.marginTop = '200px';// move it down 200px
+// btn.style.marginLeft = 'auto';
 btn.style.verticleAlign = "center";
 btn.style.textAlign = "center";
 btn.addEventListener('click', evt => makingSure());

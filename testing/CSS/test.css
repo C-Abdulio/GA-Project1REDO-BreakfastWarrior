@@ -122,8 +122,12 @@
 	display:block;
 	z-index: 1;
 	position: fixed;
-	width: 100rem;
-	height: 100rem;
+	width: 100%;
+	height: auto;
+	background-image:url("../img/TitleScreen.png");
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	/*background-position: center;*/
 	background-color: rgb(255, 100,234);
 	position:absolute;
 }
@@ -132,7 +136,7 @@
 	width: 200px;
 	height: 100px;
 	position: relative;
-	margin:5% auto;
+	margin:40% auto;
 	padding: 2px;
 	background-color: purple;
 }
