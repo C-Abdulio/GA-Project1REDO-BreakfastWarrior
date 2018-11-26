@@ -1,9 +1,7 @@
 # GA_P1_Redo_BreakfastWarrior
 **A re-do of the first project for GA WDI - Now a Zelda-like game with grid based collision.**
 
-![Breakfast Warrior](
-        GA-Project1REDO-BreakfastWarrior/assets/Maps/WIREFRAME_BW_Redo_shortmap.png
-      )
+![Breakfast Warrior](GA-Project1REDO-BreakfastWarrior/assets/Maps/WIREFRAME_BW_Redo_shortmap.png)
 
 **1) Saturday Morning Breakfast Warrior**
 **_A Zelda type action-adventure game_**
