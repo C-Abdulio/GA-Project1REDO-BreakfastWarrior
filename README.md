@@ -60,4 +60,4 @@ _Of all the ideas that I worked on, this was the one I put the most effort into.
  - full game still in progress. without a surefire way to render board and items dynamically, hard coding co-ordinates is a requirement. need time to experiment with settings in order to fulfill full vision.
  - MVP has shifted from getting a win condition, to fulfilling a losing condition.
  
- # Link to site - http://red-shock.surge.sh/
+ # Link to site - http://stupendous-bucket.surge.sh
