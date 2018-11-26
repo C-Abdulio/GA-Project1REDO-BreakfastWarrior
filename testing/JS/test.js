@@ -1,8 +1,9 @@
-let boardEl = document.querySelector('.board');
-let playerEl = document.querySelector('.player');
-let enemyEl = document.querySelector('.enemy');
+const boardEl = document.querySelector('.board');
+const playerEl = document.querySelector('.player');
+const enemyEl = document.querySelector('.enemy');
 let start = document.querySelector('.start');
 let modal = document.querySelector('.modal');
+const obsticle = document.getElementsByClassName('cheerios');
 
 const player = {
   x:0, y:0
@@ -41,12 +42,11 @@ const item = [
 ]
 
 function startGame(){
-// playerEl.style.left = "100px";
-// playerEl.style.top = "100px";
 modal.style.display = "none";
 start.style.display = "block";
 let btn = document.querySelector('.startInner');
 btn.style.marginTop = '200px';// move it down 200px
+btn.style.marginLeft = 'auto';
 btn.style.verticleAlign = "center";
 btn.style.textAlign = "center";
 btn.addEventListener('click', evt => makingSure());
@@ -54,20 +54,18 @@ console.log('game');
 };
 
 function makingSure(){
-		debugger;
 	start.style.display = "none";
-	console.log(playerEl);
-	console.log(boardEl);
-	console.log(item);
+	console.log(boardEl);	
 	playerEl.style.display = "block";
+	console.log(playerEl);
+	player.x == 0;
+	player.y == 0;
 	makeRocks();
 	makeHazard();
 	let kellogs = document.querySelector('.cornflakes');
 		kellogs.setAttribute("class", "cornflakes");
 	makeItem();
-	playerEl.style.left = (player.x === 0).toString() + 'px';
-	playerEl.style.top = (player.y === 0).toString() + 'px';
-	
+	console.log(item);	
 };
 startGame();
 
@@ -110,7 +108,7 @@ function makeItem(){
 	}
 };
 
-makeItem();
+// makeItem();
 
 function checkItem(x, y){
 	// debugger;
@@ -199,7 +197,7 @@ function gridGuard (x, y){
 
 function gameOver(x, y){
 	if (player.x != undefined, player.y != undefined){
-		const badFlake = document.querySelector('.cornflakes');
+		let badFlake = document.querySelector('.cornflakes');
 		badFlake.style.backgroundColor = 'red';
 		console.log('K.O.');
 		let lose = document.querySelector('#gameOver');
@@ -216,6 +214,12 @@ function uWin(x, y){
 			showModal(win);
 		}
 	}
+}
+
+function resetBoard(){
+	playerEl.style.display = "none";
+	
+	startGame();
 }
 
 function showModal(){

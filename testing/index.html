@@ -13,8 +13,8 @@
 	<div class="modal" id="gameOver">
 			<div class="modalInner">
 				<!-- <span class="close">&times;</span> -->
-				<img src="./gameOver.gif" alt="game_over" >
-				<button onclick="startGame()">PLAY AGAIN?</button>
+				<img src="./img/gameOver.gif" alt="game_over" >
+				<button onclick="resetBoard()">PLAY AGAIN?</button>
 			</div>
 	</div>
 	<div class="modal" id="youWin">
@@ -22,12 +22,13 @@
 				<!-- <span class="close">&times;</span> -->
 				<div id = "winning">
 					<h1>YOU WIN</h1>
-					<button onclick="startGame()">PLAY AGAIN?</button>
+					<button onclick="resetBoard()">PLAY AGAIN?</button>
 				</div>
 			</div>
 	</div>
 
 	<div class="board" id="map1">
+		<img src="./img/Rocks.png" id="rocks">
 		<div class="player"></div>
 	</div>
 

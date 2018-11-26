@@ -3,7 +3,7 @@
 const playerEl = document.querySelector("#player");
 const enemyEl = document.querySelector("#enemy");
 const itemEl = document.getElementsByClassName("item");
-const boardEl = document.querySelector(".board");
+const boardEl = document.querySelector(".barrier");
 let start = document.querySelector('.start');
 let modal = document.querySelector('.modal');
 
@@ -22,17 +22,29 @@ const barrier = [
 ]
 
 const cheerios = [
-  {x:0, y:0}, {x:1, y:0},  {x:2, y:0}, {x:3, y:0}, {x:6, y:0},
-  {x:9, y:0}, {x:0, y:1},  {x:2, y:1}, {x:3, y:1}
+  // {x:0, y:0}, {x:1, y:0},  {x:2, y:0}, {x:3, y:0}, {x:6, y:0},
+  // {x:9, y:0}, {x:0, y:1},  {x:2, y:1}, {x:3, y:1}
+
+  {x:2, y:0}, {x:3, y:0}, {x:4, y:0}, {x:5, y:0},  {x:6, y:0}, {x:7, y:0}, {x:8, y:0},  {x:9, y:0}, {x:10, y:0},
+  {x:3, y:1}, {x:4, y:1}, {x:5, y:1},  {x:6, y:1}, {x:7, y:1}, {x:8, y:1},  {x:9, y:1}, {x:10, y:1},
+  {x:0, y:2},  {x:3, y:2}, {x:4, y:2}, {x:5, y:2},  {x:6, y:2}, {x:7, y:2}, {x:8, y:2},  {x:9, y:2}, {x:10, y:2},
+  {x:0, y:3},  {x:1, y:3},  {x:2, y:3}, {x:7, y:3}, {x:8, y:3},  {x:9, y:3}, {x:10, y:3},
+  {x:0, y:4},  {x:2, y:4}, {x:3, y:4}, {x:4, y:4}, {x:5, y:4},  {x:6, y:4}, {x:7, y:4}, {x:8, y:4},  {x:9, y:4}, {x:10, y:4},
+  {x:0, y:5},  {x:2, y:5}, {x:3, y:5}, {x:4, y:5}, {x:5, y:5},  {x:6, y:5}, {x:7, y:5}, {x:8, y:5},  {x:9, y:5}, {x:10, y:5},
+  {x:0, y:6},  {x:2, y:6}, {x:3, y:6}, {x:4, y:6}, {x:5, y:6},  {x:6, y:6}, {x:7, y:6}, {x:8, y:6},  {x:9, y:6}, {x:10, y:6},
+  {x:0, y:7},  {x:2, y:7}, {x:3, y:7}, {x:4, y:7}, {x:5, y:7},  {x:6, y:7}, {x:7, y:7}, {x:8, y:7},  {x:9, y:7}, {x:10, y:7},
+  {x:0, y:8},  {x:1, y:8},  {x:2, y:8}, {x:3, y:8}, {x:4, y:8}, {x:5, y:8},  {x:6, y:8}, {x:7, y:8}, {x:8, y:8},  {x:9, y:8}, {x:10, y:8},
+  {x:0, y:9},  {x:1, y:9},  {x:2, y:9}, {x:3, y:9}, {x:4, y:9}, {x:5, y:9},  {x:6, y:9}, {x:7, y:9}, {x:8, y:9},  {x:9, y:9}, {x:10, y:9},
+  {x:0, y:10},  {x:1, y:10},  {x:2, y:10}, {x:3, y:10}, {x:4, y:10}, {x:5, y:10},  {x:6, y:10}, {x:7, y:10}, {x:8, y:10},  {x:9, y:10}, {x:10, y:10}
 ]
 
-const enemy = {
-  x:5, y:2
-}
+const enemy = [
+{x:5, y:2}
+]
 
-const flakes = {
-  x:4, y:2
-}
+const flakes = [
+{x:4, y:2}
+]
 
 const item = [
 {x:3, y:2}
@@ -46,6 +58,7 @@ function resetBoard(){
 }
 
 function startGame(){
+playerEl.style.display = "none";
 modal.style.display = "none";
 start.style.display = "block";
 let btn = document.querySelector('.startInner');
@@ -57,45 +70,49 @@ console.log('game');
 };
 
 function fungShui(){
+  debugger;
 start.style.display = "none";
   console.log(boardEl); 
+  console.log(barrier);
   playerEl.style.display = "block";
   console.log(playerEl);
   makeCheerios();
   console.log(cheerios)
   makeHazard();
-  // let kellogs = document.querySelector('.cornflakes');
-  //   kellogs.setAttribute("class", "cornflakes");
+  let kellogs = document.querySelector('#cornflakes');
   makeItem();
   console.log(item);
 }
 
-fungShui();
+startGame();
 
 function makeCheerios(){
-
+debugger;
   for(let i = 0; i < cheerios.length; i ++){
     let o = document.createElement('div');
-    o.className = 'cheerios';
+    o.className = 'object';
+    o.setAttribute('id', 'cheerios');
     let wheels = cheerios[i];
-    o.style.width = "20px";
+    o.style.width = "50px";
     o.style.height = "50px";
-    o.style.left = (wheels.x * 100).toString() + 'px';
-    o.style.top = (wheels.y * 100).toString() + 'px';
+    o.style.left = (wheels.x * 50 ).toString() + 'px';
+    o.style.top = (wheels.y * 50).toString() + 'px';
     boardEl.appendChild(o);
     console.log('cheerios')
   }
 }
 
 function makeHazard(){
+  debugger;
     for (let i = 0; i < flakes.length; i++){
     let cornflakes = document.createElement('div');
-    cornflakes.className = 'cornflakes';
+    cornflakes.className = 'object';
+    cornflakes.setAttribute('id', 'cornflakes');
     let kellogs = flakes[i];
-    conrflakes.style.width = "30px";
-    conrflakes.style.height = "60px";
-    cornflakes.style.left = (kellogs.x * 100).toString() + 'px';
-    cornflakes.style.top = (kellogs.y * 100).toString() + 'px';
+    cornflakes.style.width = "30px";
+    cornflakes.style.height = "60px";
+    cornflakes.style.left = (kellogs.x * 5).toString() + 'px';
+    cornflakes.style.top = (kellogs.y * 5).toString() + 'px';
     boardEl.appendChild(cornflakes);
     console.log('cornflake');
   }
@@ -103,19 +120,20 @@ function makeHazard(){
 
 function makeItem(){
     //make a loop to get rid of them
-  const eat = document.getElementsByClassName('cereal');
+  const eat = document.getElementById('cereal');
   for (let e = 0; e < eat.length; e++){
     eat[e].remove();
   }
   //make a loop to create items
   for (let c = 0; c < item.length; c++){
     let cerealBowl = document.createElement('div');
-    cerealBowl.className = 'cereal';
+    cerealBowl.className = 'item';
+    cerealBowl.setAttribute('id', 'cereal');
     let cereal = item[c];
     cerealBowl.style.width = "10px";
     cerealBowl.style.height = "20px";
-    cerealBowl.style.left = (cereal.x * 100).toString() + 'px';
-    cerealBowl.style.top = (cereal.y * 100).toString() + 'px';
+    cerealBowl.style.left = (cereal.x * 5).toString() + 'rem';
+    cerealBowl.style.top = (cereal.y * 5).toString() + 'rem';
     boardEl.appendChild(cerealBowl);
   }
 };
@@ -184,30 +202,40 @@ function movePlayer (x, y){
 }
 
 function moveLeft(){
-  player.x-=1;
-  movePlayer(player.x, player.y)
-}
-function moveUp(){
-  player.y-=1;
-  movePlayer(player.x, player.y)
+  if (canMoveTo(player.x - 1, player.y)){
+  player.x -=1;
+  movePlayer(player.x, player.y);
+  }
 }
 function moveRight(){
-  player.x+=1;
-  movePlayer(player.x, player.y)
+  if (canMoveTo(player.x + 1, player.y)){
+  player.x +=1;
+  movePlayer(player.x, player.y);
+  }
+}
+function moveUp(){
+  if (canMoveTo(player.x, player.y - 1)){
+  player.y -= 1;
+  movePlayer(player.x, player.y);
+  }
 }
 function moveDown(){
-  player.y+=1;
-  movePlayer(player.x, player.y)
+  if (canMoveTo(player.x, player.y + 1)){
+  player.y += 1;
+  movePlayer(player.x, player.y);
+  }
 }
 
+
 function gridGuard (x, y){
-  if (player.x < 0 || player.y < 0|| player.x > 9 || player.y > 5){
+  
+  if (x < 0 || y < 0|| x > 10 || y > 9){
     return true
   }
 }
 
 function canMoveTo(x, y){//only determines collission against static option
-  if(gridGuard(player.x, player.y)){
+  if(gridGuard(x, y)){
     console.log('wall');
     return false;
   }

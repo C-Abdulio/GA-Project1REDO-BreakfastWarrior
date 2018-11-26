@@ -10,8 +10,10 @@ body{
 
 .board{
   z-index:0;
-  width: 1000px;
-  height:650px;
+ /* width: 1000px;
+  height:650px;*/
+  width:40rem;
+  height:40rem;
   background-color: grey;
   border: solid 2px orange;
   position: relative;
@@ -28,44 +30,45 @@ body{
 }
 
 .barrier{
-  width:910px;
-  height:550px;
+/*  width:910px;
+  height:550px;*/
+  width:35rem;
+  height:35rem;
   position: relative;
   background-color:yellow;
   margin-top:50px;
 }
 
 #rocks{
-  width:1000px;
-  height: 650px;
-  background-image:url("../assets/TestSprites/Rocks.png");
+ /* width:1000px;
+  height: 650px;*/
+  width:40rem;
+  height:40rem;
+  /*background-image:url("../assets/TestSprites/Rocks.png");*/
   background-size:contain;
   border:solid 1.5px black;
   position:absolute;
 }
 
-.cherrios{
-  margin: auto;
+#cheerios{
+  background-color:blue;
   background-image: url("../assets/TestSprites/TestDesign_cheerios.png");
   background-size:contain;
   z-index: 0;
-  position: relative;
 }
 
-.enemy {
-  margin:auto;
+#enemy {
   background-color:red;
   z-index:0;
 }
 
-.cornflakes{
-  margin:auto;
+#cornflakes{
+
   background-color: yellow;
   z-index:0;
 }
 
-.cereal{
-  margin:auto;
+#cereal{
   background-color: green;
   z-index:0;
 }

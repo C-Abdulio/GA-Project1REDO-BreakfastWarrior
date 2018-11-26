@@ -7,7 +7,7 @@
 	z-index: -1;
 	width: 400px;
 	height: 400px;
-	background-color: grey;
+	background-color: magenta;
 	position: relative;
 	border: solid white 1px;
 /*	display:flex;*/
@@ -16,21 +16,38 @@
 .board div {
 	width: 100px;
 	height: 100px;
-	border: dashed black 1px;
+	/*border: dashed black 1px;*/
 	position: absolute;
 	
+}
+
+#rocks{
+ /* width:1000px;
+  height: 650px;*/
+  width:400px;
+  height:400px;
+  /*background-image:url("../assets/TestSprites/Rocks.png");*/
+  background-size:contain;
+  border:solid 1.5px black;
+  position:absolute;
 }
 
 .player {
 	display: none;
 	margin:auto;
-	background-color: rgb(205, 20, 100);
+	background: url('../img/TestDesign_BW.png');
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center;
 	z-index:0;
 }
 
 .cheerios {
 	margin:auto;
-	background-color: blue;
+	background-image: url("../img/TestDesign_cheerios.png");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center;
 	z-index:0;
 }
 
@@ -43,13 +60,19 @@
 
 .cornflakes{
 	margin:auto;
-	background-color: yellow;
+	background-image: url("../img/TestDesign_BerryTroll.png");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center;
 	z-index:0;
 }
 
 .cereal{
 	margin:auto;
-	background-color: green;
+	background-image: url("../img/TestDesign_Cereal.png");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center;
 	z-index:0;
 }
 
