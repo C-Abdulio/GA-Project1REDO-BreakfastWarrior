@@ -25,25 +25,32 @@ const cheerios = [
   // {x:0, y:0}, {x:1, y:0},  {x:2, y:0}, {x:3, y:0}, {x:6, y:0},
   // {x:9, y:0}, {x:0, y:1},  {x:2, y:1}, {x:3, y:1}
 
-  {x:2, y:0}, {x:3, y:0}, {x:4, y:0}, {x:5, y:0},  {x:6, y:0}, {x:7, y:0}, {x:8, y:0},  {x:9, y:0}, {x:10, y:0},
-  {x:3, y:1}, {x:4, y:1}, {x:5, y:1},  {x:6, y:1}, {x:7, y:1}, {x:8, y:1},  {x:9, y:1}, {x:10, y:1},
-  {x:0, y:2},  {x:3, y:2}, {x:4, y:2}, {x:5, y:2},  {x:6, y:2}, {x:7, y:2}, {x:8, y:2},  {x:9, y:2}, {x:10, y:2},
-  {x:0, y:3},  {x:1, y:3},  {x:2, y:3}, {x:7, y:3}, {x:8, y:3},  {x:9, y:3}, {x:10, y:3},
-  {x:0, y:4},  {x:2, y:4}, {x:3, y:4}, {x:4, y:4}, {x:5, y:4},  {x:6, y:4}, {x:7, y:4}, {x:8, y:4},  {x:9, y:4}, {x:10, y:4},
-  {x:0, y:5},  {x:2, y:5}, {x:3, y:5}, {x:4, y:5}, {x:5, y:5},  {x:6, y:5}, {x:7, y:5}, {x:8, y:5},  {x:9, y:5}, {x:10, y:5},
-  {x:0, y:6},  {x:2, y:6}, {x:3, y:6}, {x:4, y:6}, {x:5, y:6},  {x:6, y:6}, {x:7, y:6}, {x:8, y:6},  {x:9, y:6}, {x:10, y:6},
-  {x:0, y:7},  {x:2, y:7}, {x:3, y:7}, {x:4, y:7}, {x:5, y:7},  {x:6, y:7}, {x:7, y:7}, {x:8, y:7},  {x:9, y:7}, {x:10, y:7},
-  {x:0, y:8},  {x:1, y:8},  {x:2, y:8}, {x:3, y:8}, {x:4, y:8}, {x:5, y:8},  {x:6, y:8}, {x:7, y:8}, {x:8, y:8},  {x:9, y:8}, {x:10, y:8},
-  {x:0, y:9},  {x:1, y:9},  {x:2, y:9}, {x:3, y:9}, {x:4, y:9}, {x:5, y:9},  {x:6, y:9}, {x:7, y:9}, {x:8, y:9},  {x:9, y:9}, {x:10, y:9},
-  {x:0, y:10},  {x:1, y:10},  {x:2, y:10}, {x:3, y:10}, {x:4, y:10}, {x:5, y:10},  {x:6, y:10}, {x:7, y:10}, {x:8, y:10},  {x:9, y:10}, {x:10, y:10}
+                            {x:2, y:0}, {x:3, y:0}, {x:4, y:0}, {x:5, y:0},  {x:6, y:0},                          {x:7, y:0}, {x:8, y:0},              {x:10, y:0},
+                                        {x:3, y:1}, {x:4, y:1}, {x:5, y:1},  {x:6, y:1}, {x:7, y:1}, {x:8, y:1},
+  {x:0, y:2},
+  {x:0, y:3},  {x:1, y:3},
+  {x:0, y:4},  {x:1, y:4}, {x:2, y:4}, {x:3, y:4},
+  {x:0, y:5},                           {x:3, y:5}, {x:4, y:5}, {x:5, y:5}, {x:6, y:5},                                        {x:9, y:5}, {x:10, y:5},
+  {x:0, y:6},               {x:2, y:6}, {x:3, y:6}, {x:4, y:6}, {x:5, y:6}, {x:6, y:6},                                                   {x:9, y:6}, {x:10, y:6},
+  {x:0, y:7},                           {x:3, y:7}, {x:4, y:7}, {x:5, y:7}, {x:6, y:7},                                                   {x:9, y:7}, {x:10, y:7},
+  {x:0, y:8},                           {x:3, y:8},             {x:5, y:8},  {x:6, y:8},                                                  {x:9, y:8}, {x:10, y:8},
+  {x:0, y:9},  {x:1, y:9},                                                                                                                {x:9, y:9}, {x:10, y:9},
+  {x:0, y:10},                                                                                                                            {x:9, y:10}, {x:10, y:10}
 ]
 
 const enemy = [
-{x:5, y:2}
+{x:5, y:2},
+
 ]
 
 const flakes = [
-{x:4, y:2}
+{x:9, y:0},
+{x:10, y:1},
+{x:5, y:4}, {x:9, y:4},
+{x:2, y:5}, {x:7, y:5},
+{x:0, y:7}, {x:3, y:7}, {x:3, y:8}, {x:5, y:8},
+{x:0, y:9},  {x:1, y:9},
+{x:0, y:10}
 ]
 
 const item = [
@@ -53,7 +60,7 @@ const item = [
 function resetBoard(){
   playerEl.style.display = "none";
   playerEl.style.left = (player.x * 50).toString() + 'px';
-  playerEl.style.top = (player.y * 50).toString() + 'px'; 
+  playerEl.style.top = (player.y * 50).toString() + 'px';
   startGame();
 }
 
@@ -70,9 +77,8 @@ console.log('game');
 };
 
 function fungShui(){
-  debugger;
 start.style.display = "none";
-  console.log(boardEl); 
+  console.log(boardEl);
   console.log(barrier);
   playerEl.style.display = "block";
   console.log(playerEl);
@@ -83,11 +89,10 @@ start.style.display = "none";
   makeItem();
   console.log(item);
 }
-
+// fungShui();
 startGame();
 
 function makeCheerios(){
-debugger;
   for(let i = 0; i < cheerios.length; i ++){
     let o = document.createElement('div');
     o.className = 'object';
@@ -103,7 +108,6 @@ debugger;
 }
 
 function makeHazard(){
-  debugger;
     for (let i = 0; i < flakes.length; i++){
     let cornflakes = document.createElement('div');
     cornflakes.className = 'object';
@@ -111,8 +115,8 @@ function makeHazard(){
     let kellogs = flakes[i];
     cornflakes.style.width = "30px";
     cornflakes.style.height = "60px";
-    cornflakes.style.left = (kellogs.x * 5).toString() + 'px';
-    cornflakes.style.top = (kellogs.y * 5).toString() + 'px';
+    cornflakes.style.left = (kellogs.x * 50).toString() + 'px';
+    cornflakes.style.top = (kellogs.y * 50).toString() + 'px';
     boardEl.appendChild(cornflakes);
     console.log('cornflake');
   }
@@ -160,7 +164,27 @@ function takeItem(x, y){
   }
 }
 
+function rockBump(x, y){
+	for(let j = 0; j < cheerios.length; j++){
+		let rocky = cheerios[j];
+    let tallRock = cheerios[j].height;
+    let wideRock = cheerios[j].width;
+		if(x === rocky.x && y === rocky.y){
+			return true;
+		}
+	}
+	return false;
+};
 
+function collideFlake(x, y){
+	for(let j = 0; j < flakes.length; j++){
+		let kellogs = flakes[j];
+		if(x === kellogs.x && y === kellogs.y){
+			return true;
+		}
+	}
+	return false;
+};
 
 document.body.addEventListener('keydown', tap => { // add listen for keypress to the body
 const keyPress = tap.keyCode; //assign keyPress a code
@@ -228,8 +252,7 @@ function moveDown(){
 
 
 function gridGuard (x, y){
-  
-  if (x < 0 || y < 0|| x > 10 || y > 9){
+  if (x < 0 || y < 0|| x > 10 || y > 10){
     return true
   }
 }
@@ -239,29 +262,29 @@ function canMoveTo(x, y){//only determines collission against static option
     console.log('wall');
     return false;
   }
-  // else if (rockBump(x, y)){
-  //   console.log('oops');
-  //   return false;
-  // }
-  // else if (collideFlake(x, y)){
-  //   gameOver();
-  //   // playerHarm(x, y);
-  //   return false; 
-  // }
+  else if (rockBump(x, y)){
+    console.log('oops');
+    return false;
+  }
+  else if (collideFlake(x, y)){
+    gameOver();
+    // playerHarm(x, y);
+    return false;
+  }
   else {
     return true;
   }
 }
 
-// function gameOver(x, y){
-//   if (player.x != undefined, player.y != undefined){
-//     let badFlake = document.querySelector('.cornflakes');
-//     badFlake.style.backgroundColor = 'red';
-//     console.log('K.O.');
-//     let lose = document.querySelector('#gameOver');
-//     showModal(lose);
-//   }
-// }
+function gameOver(x, y){
+  if (player.x != undefined, player.y != undefined){
+    let badFlake = document.querySelector('#cornflakes');
+    badFlake.style.backgroundColor = 'red';
+    console.log('K.O.');
+    let lose = document.querySelector('#gameOver');
+    showModal(lose);
+  }
+}
 
 function uWin(x, y){
   let munch = item;

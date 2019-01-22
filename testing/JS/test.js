@@ -218,7 +218,10 @@ function uWin(x, y){
 
 function resetBoard(){
 	playerEl.style.display = "none";
-	
+	playerEl.style.left = 0;
+	playerEl.style.top = 0;
+	player.x = 0;
+	player.y = 0;
 	startGame();
 }
 
