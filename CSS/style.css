@@ -92,6 +92,7 @@ body{
 }
 
 .modal{
+  background-image: url("../assets/TitleScreen.png");
   display:none;
   z-index: 1;
   position: fixed;
