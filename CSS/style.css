@@ -64,7 +64,8 @@ body{
 
 #cornflakes{
 
-  background-color: yellow;
+  background-image: url("../assets/TestSprites/TestDesign_Cornflake.png");
+  /* background-size: cover; */
   z-index:0;
 }
 
